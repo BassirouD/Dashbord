@@ -1,0 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-profil',
+  templateUrl: './profil.page.html',
+  styleUrls: ['./profil.page.scss'],
+})
+export class ProfilPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+    showLocationDetail = false;
+
+    onScroll(ev) {
+        const offset = ev.detail.scrollTop;
+        this.showLocationDetail = offset > 40;
+    }
+
+}
