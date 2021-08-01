@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Modifier mon profil</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="play1" style="margin-top: 20px;">
+        <img src="../../assets/images/profile.png" class="rounded-circle im" width="100" height="100">
+        <br>
+        <!-- <h6 style="color: cornflowerblue; font-size: 20px;">DIPA</h6> -->
+        <br/>
+    </div>
+    <form #f="ngForm" (ngSubmit)="updateUser()">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-item no-lines class="genre">
+                        <ion-label>Nom:</ion-label>
+                        <!-- <ion-icon slot="end" name="person"></ion-icon> -->
+                        <ion-input type="text"  [(ngModel)]="loadData.nom" name="nom" style="font-weight: bold;"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-item no-lines class="genre">
+                        <ion-label>Prénom:</ion-label>
+                        <!-- <ion-icon slot="end" name="person"></ion-icon> -->
+                        <ion-input type="text"  [(ngModel)]="loadData.prenom" name="prenom" style="font-weight: bold;"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-item no-lines class="genre">
+                        <ion-label>Téléphone:</ion-label>
+                        <!-- <ion-icon slot="end" name="person"></ion-icon> -->
+                        <ion-input type="text"  [(ngModel)]="loadData.telephone" name="telephone" style="font-weight: bold;"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-item no-lines class="genre">
+                        <ion-label>Email:</ion-label>
+                        <ion-input type="email" [(ngModel)]="loadData.email" name="email" style="font-weight: bold;"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <div>
+                <br>
+                <ion-button color="primary" expand="full" type="submit" shape="round">
+                    <ion-icon name="log-in-outline"></ion-icon>
+                    <span>MODIFIER</span>
+                </ion-button>
+            </div>
+        </ion-grid>
+    </form>
+</ion-content>
+
+
+

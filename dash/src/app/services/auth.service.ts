@@ -8,7 +8,7 @@ export class AuthService {
     constructor() { }
 
     login(data){
-        if((data.login==="user")&&(data.motdepasse==="passer123")){
+        if((data.login==="user")&&(data.password==="passer123")){
             return true;
         }else{
             return false;

@@ -1,0 +1,94 @@
+ion-title {
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+}
+
+ion-content{
+    --ion-background-color:white;
+}
+
+.inscrit {
+    position: relative;
+    top: 15px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.input{
+    border:1px solid cornflowerblue;
+    border-radius: 10px;
+}
+ion-input{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.formulaire{
+    position: relative;
+    top: 170px;
+}
+
+.im{
+    border: 2px solid cornflowerblue;
+    border-radius: 50px;
+}
+
+.play {
+    position: relative;
+    top: 0px;
+    text-align: center;
+    height: 250px;
+}
+.genre{
+    border:1px solid cornflowerblue;
+    border-radius: 10px;
+}
+
+ion-input {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.mbame{
+    color:black;
+}
+
+.bouton {
+    margin: 20px;
+}
+
+//ion-button{
+//border: 2px solid #ffce00;
+//color: #ffce00;
+//font-family:'Times New Roman', Times, serif;
+//}
+span {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.inscrit {
+    position: relative;
+    top: 15px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.play1 {
+    position: relative;
+    top: 0px;
+    text-align: center;
+    height: 150px;
+}
+
+h6 {
+    font-size: 11px;
+}
+
+ion-item{
+    background-color: transparent !important;
+}
+
+ion-icon{
+    color:white;
+}

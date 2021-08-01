@@ -32,6 +32,65 @@
 </ion-header>
 
 <ion-content>
+
+    <ion-card style="background: #e7e7e7; margin-right: 10px;margin-left: 10px;border-radius: 10px;"
+              *ngFor="let d of data; let i = index">
+<!--        #FFEBCD argente-->
+        <div>
+            <ion-row>
+                <ion-col size="3">
+                    <ion-icon style="margin-left: 5px;margin-top: 5px;width: 20px;height: 20px"
+                              name="calendar-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="3">
+                    <p style="font-size: 14px;margin-top: 5px">{{d.date}}</p>
+                </ion-col>
+                <ion-col size="3" class="text-right">
+                    <ion-badge style="background: green;border-radius: 15px;margin-top: 5px" *ngIf="rest[i] > 0">
+                        <ion-icon name="arrow-up-outline"></ion-icon>
+                    </ion-badge>
+                    <ion-badge style="background: red;border-radius: 15px;margin-top: 5px" *ngIf="rest[i] < 0">
+                        <ion-icon name="arrow-down-outline"></ion-icon>
+                    </ion-badge>
+                </ion-col>
+                <ion-col size="3" class="text-right" (click)="openDetail()" *ngIf="mode == false">
+                    <ion-icon style="margin-right: 10px;width: 20px;height: 20px;margin-top: 5px"
+                              name="chevron-down-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="3" class="text-right" (click)="closeDetail()" *ngIf="mode == true">
+                    <ion-icon style="margin-right: 10px;width: 20px;height: 20px;margin-top: 5px"
+                              name="chevron-up-outline"></ion-icon>
+                </ion-col>
+            </ion-row>
+            <div *ngIf="mode == true">
+                <hr>
+                <ion-row>
+                    <ion-col style="font-size: 13px;margin-left: 5px">
+                        <span>Volume</span><br>
+                        <b>{{d.nbdoss}}</b>
+                    </ion-col>
+                    <ion-col style="font-size: 13px">
+                        <span>CA journalier</span><br>
+                        <b>{{numStr(d.nbdoss * 14000, '.')}}</b>
+                    </ion-col>
+                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] > 0">
+                        <span>Gains</span><br>
+                        <b>{{numStr(rest[i] * 14000)}}</b>
+                    </ion-col>
+                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] < 0">
+                        <span>Pains</span><br>
+                        <b>{{numStr(rest[i] * 14000)}}</b>
+                    </ion-col>
+                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] == 0">
+                        <span>Pains</span><br>
+                        <b>{{numStr(rest[i] * 14000)}}</b>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+    </ion-card>
+
+
     <!--    <br>-->
     <!--    <ion-row style="background: #e7e7e7; margin-right: 10px;margin-left: 10px;border-radius: 10px;">-->
     <!--        <ion-col size="3">-->
@@ -89,47 +148,6 @@
     <!--        </ion-row>-->
     <!--    </div>-->
 
-
-    <ion-card style="background: #FFEBCD; margin-right: 10px;margin-left: 10px;border-radius: 10px;"
-              *ngFor="let d of data">
-        <br>
-        <div>
-            <ion-row>
-                <ion-col size="3">
-                    <ion-icon style="margin-left: 5px;margin-top: 5px;width: 20px;height: 20px"
-                              name="calendar-outline"></ion-icon>
-                </ion-col>
-                <ion-col size="3">
-                    <p style="font-size: 14px;margin-top: 5px">{{d.date}}</p>
-                </ion-col>
-                <ion-col size="3" class="text-right">
-                    <ion-badge style="background: green;border-radius: 15px;margin-top: 5px">
-                        <ion-icon name="arrow-up-outline"></ion-icon>
-                    </ion-badge>
-                </ion-col>
-                <ion-col size="3" class="text-right">
-                    <ion-icon style="margin-right: 10px;width: 20px;height: 20px;margin-top: 5px" name="chevron-down-outline"></ion-icon>
-                </ion-col>
-            </ion-row>
-            <hr>
-            <ion-row>
-                <ion-col size="" style="font-size: 13px;margin-left: 5px">
-                    <span>Volume</span><br>
-                    <b>{{d.nbdoss}}</b>
-                </ion-col>
-                <ion-col size="" style="font-size: 13px">
-                    <span>CA journalier</span><br>
-                    <b>{{numStr(d.nbdoss * 14000, '.')}}</b>
-                </ion-col>
-                <ion-col size="" class="text-right" style="font-size: 13px">
-                    <span>Gains</span><br>
-                    <b>500</b>
-                </ion-col>
-            </ion-row>
-        </div>
-    </ion-card>
-
-    <br>
     <!--    <ion-row style="background: #e7e7e7; margin-right: 10px;margin-left: 10px;border-radius: 10px;">-->
     <!--        <ion-col size="3">-->
     <!--            <ion-icon style="margin-left: 5px;margin-top: 5px" name="calendar-outline"></ion-icon>-->

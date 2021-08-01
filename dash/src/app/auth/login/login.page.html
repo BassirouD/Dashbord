@@ -1,0 +1,42 @@
+<ion-content>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form id="form" #f="ngForm" (ngSubmit)="login()">
+                    <ion-item class="ion-margin-bottom">
+                        <ion-icon slot="end" name="person"></ion-icon>
+                        <ion-input type="text" [(ngModel)]="loadData.login" required="" name="login"
+                                   placeholder="login"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-item class="ion-margin-bottom">
+                        <ion-icon slot="end" name="key"></ion-icon>
+                        <ion-input type="password" placeholder="mot de passe" [(ngModel)]="loadData.password"
+                                   required="" name="password"></ion-input>
+                    </ion-item>
+                    <p></p>
+                    <ion-button expand="block" type="submit" shape="round">Connexion</ion-button>
+                </form>
+            </div>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <img src="assets/images/gainde.jpg" class="rounded-circle im" width="100" height="100">
+                    <h2>Orbus Dashbord</h2>
+                    <h3>
+                        indicateur de performance
+                    </h3>
+                    <br>
+                </div>
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <button class="btn transparent" id="sign-in-btn">
+                        Sign in
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
