@@ -46,12 +46,12 @@
                     <p style="font-size: 14px;margin-top: 5px">{{d.date}}</p>
                 </ion-col>
                 <ion-col size="3" class="text-right">
-                    <ion-badge style="background: green;border-radius: 15px;margin-top: 5px" *ngIf="rest[i] > 0">
-                        <ion-icon name="arrow-up-outline"></ion-icon>
-                    </ion-badge>
-                    <ion-badge style="background: red;border-radius: 15px;margin-top: 5px" *ngIf="rest[i] < 0">
-                        <ion-icon name="arrow-down-outline"></ion-icon>
-                    </ion-badge>
+<!--                    <ion-badge style="background: green;border-radius: 15px;margin-top: 5px" *ngIf="rest[i] > 0">-->
+<!--                        <ion-icon name="arrow-up-outline"></ion-icon>-->
+<!--                    </ion-badge>-->
+<!--                    <ion-badge style="background: red;border-radius: 15px;margin-top: 5px" *ngIf="rest[i] < 0">-->
+<!--                        <ion-icon name="arrow-down-outline"></ion-icon>-->
+<!--                    </ion-badge>-->
                 </ion-col>
                 <ion-col size="3" class="text-right" (click)="openDetail()" *ngIf="mode == false">
                     <ion-icon style="margin-right: 10px;width: 20px;height: 20px;margin-top: 5px"
@@ -73,18 +73,18 @@
                         <span>CA journalier</span><br>
                         <b>{{numStr(d.nbdoss * 14000, '.')}}</b>
                     </ion-col>
-                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] > 0">
-                        <span>Gains</span><br>
-                        <b>{{numStr(rest[i] * 14000)}}</b>
-                    </ion-col>
-                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] < 0">
-                        <span>Pains</span><br>
-                        <b>{{numStr(rest[i] * 14000)}}</b>
-                    </ion-col>
-                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] == 0">
-                        <span>Pains</span><br>
-                        <b>{{numStr(rest[i] * 14000)}}</b>
-                    </ion-col>
+<!--                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] > 0">-->
+<!--                        <span>Gains</span><br>-->
+<!--                        <b>{{numStr(rest[i] * 14000)}}</b>-->
+<!--                    </ion-col>-->
+<!--                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] < 0">-->
+<!--                        <span>Pains</span><br>-->
+<!--                        <b>{{numStr(rest[i] * 14000)}}</b>-->
+<!--                    </ion-col>-->
+<!--                    <ion-col size="" class="text-right" style="font-size: 13px" *ngIf="rest[i] == 0">-->
+<!--                        <span>Pains</span><br>-->
+<!--                        <b>{{numStr(rest[i] * 14000)}}</b>-->
+<!--                    </ion-col>-->
                 </ion-row>
             </div>
         </div>

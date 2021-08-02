@@ -68,10 +68,10 @@ export class ReportingPage implements OnInit {
                 // console.log('les dates ' + resp[1].date);
                 for (let i = 0; i < resp.length - 1; i++){
                     this.count[i] = i;
-                    this.rest[i].value = resp[i]['nbdoss'] - resp[i+1]['nbdoss'];
+                    this.rest[i] = resp[i]['nbdoss'] - resp[i+1]['nbdoss'];
                     // this.rest[i] = {'value': resp[i]['nbdoss'] - resp[i+1]['nbdoss'], 'open': false};
-                    this.rest[i].open = false;
-                    console.log('Mon reste: ' + this.rest[i])
+                    // this.rest[i].open = false;
+                    // console.log('Mon reste: ' + this.rest[i])
                 }
             })
     }
