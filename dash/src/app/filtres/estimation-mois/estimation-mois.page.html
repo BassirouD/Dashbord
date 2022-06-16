@@ -1,0 +1,128 @@
+<ion-header [translucent]="true" scrollEvents="true" (ionScroll)="onScroll($event)">
+    <ion-toolbar color="myblue">
+        <ion-back-button slot="start" defaultHref="/tabs/home" style="color: #e7e7e7"></ion-back-button>
+        <ion-title style="font-size: 15px;">
+            Statisque moyenne par an
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="text-white">
+                <ion-icon name="notifications-outline" class="ionSizeSetting"></ion-icon>
+            </ion-button>
+            <ion-button class="text-white">
+                <ion-icon name="cog-outline" class="ionSizeSetting" slot="end"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar color="myblue">
+<!--        <ion-row class="sticky-row">-->
+<!--            <ion-col size="10">-->
+<!--                <ion-text class="ion-padding-start" color="medium"-->
+<!--                          [ngClass]="{'location-visible': showLocationDetail, 'location-hidden': !showLocationDetail}">-->
+<!--                </ion-text>-->
+<!--                <ion-searchbar placeholder="Votre recherche ici"></ion-searchbar>-->
+<!--            </ion-col>-->
+<!--            <ion-col size="2">-->
+<!--                <ion-button class="classButom text-white" fill="clear">-->
+<!--                    <ion-icon class="tailleIcon" name="person" slot="icon-only"></ion-icon>-->
+<!--                </ion-button>-->
+<!--            </ion-col>-->
+<!--        </ion-row>-->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form #f="ngForm">
+        <div>
+            <ion-row style="margin-right: 1%;margin-left: 1%">
+                <ion-col size="6">
+                    <ion-card class="text-center classSelect">
+                        <ion-item>
+                            <ion-row>
+                                <span>Année1: </span>
+                            </ion-row>
+                            <ion-row>
+                                <ion-input type="number" name="anne1" (ionChange)="checkannee1($event)"
+                                           [value]="anne1"></ion-input>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-card class="text-center classSelect">
+                        <ion-item>
+                            <ion-row>
+                                <span>Année2: </span>
+                            </ion-row>
+                            <ion-row>
+                                <ion-input type="number" name="anne2" (ionChange)="checkannee2($event)"
+                                           [value]="anne2"></ion-input>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+            <ion-row style="margin-right: 1%;margin-left: 1%">
+                <ion-col size="6">
+                    <ion-card>
+                        <ion-item>
+                            <ion-row>
+                                <span>Année3: </span>
+                            </ion-row>
+                            <ion-row>
+                                <ion-input type="number" name="anne1" (ionChange)="checkannee3($event)"
+                                           [value]="anneeEnCours"></ion-input>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </div>
+    </form>
+
+    <div class="tabs ion-padding">
+        <ion-segment value="volume" (ionChange)="segmentChange($event)">
+            <ion-segment-button value="volume">
+                <ion-label>Volume</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="graph" (click)="openGraph(data)">
+                <ion-label>Graphique</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div *ngIf="activeTab === 'volume'">
+        <table class="table table-striped table-bordered" style="margin-left: auto; margin-right: auto; margin-top: 5px;">
+            <thead>
+            <tr>
+                <th class="ion-text-center">Dossiers</th>
+                <th vclass="ion-text-center">Moyenne mensuelle</th>
+                <th>Moyenne journalière</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of data" style="text-align:center;">
+                <td>
+                    <span style="color: black; font-size: 12px; font-weight: bold;"> {{data.nombredossier}}</span>
+                </td>
+                <td><span style="color: black; font-size: 12px; font-weight: bold;">{{data.moyennemensuelle.toFixed(1)}}</span></td>
+                <td><span style="color: black; font-size: 12px; font-weight: bold;">{{data.moyennejournaliere.toFixed(1)}}</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="activeTab === 'graph'">
+        <ion-card>
+            <ion-list>
+                <ion-item>
+                    <span>Moyenne Journalière / Mensuelle</span>
+                    <ion-toggle [(ngModel)]="volumeOuCA" color="primary" slot="end" (ionChange)="change()"></ion-toggle>
+                </ion-item>
+            </ion-list>
+            <ion-card-header></ion-card-header>
+            <ion-card-content>
+                <div [chart]="chartOptions" style="width:80%; height:390px;margin:auto;"></div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

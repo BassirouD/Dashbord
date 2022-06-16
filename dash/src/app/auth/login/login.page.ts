@@ -21,25 +21,24 @@ export class LoginPage implements OnInit {
     ngOnInit() {
     }
 
-    async login(){
+    async login() {
         const loading = await this.loadingController.create({
-            message:"Please wait !!!",
-            duration:3000
+            message: "Please wait !!!",
+            duration: 3000
         });
         await loading.present()
         //console.log(this.loadData);
-        const credential= this.auths.login(this.loadData);
-        if(credential){
+        const credential = this.auths.login(this.loadData);
+        if (credential) {
             loading.dismiss();
-            this.presentAlert("Connexion réussie !!");
-            localStorage.setItem('loggedIn','true');
-            this.router.navigate(['/tabs/reporting']);
-        }else{
+            this.presentToast("Connexion réussie !");
+            localStorage.setItem('loggedIn', 'true');
+            this.router.navigate(['/tabs/home']);
+        } else {
             loading.dismiss();
-            this.presentToast('enable to loggin');
+            this.presentToastError('Login ou mot de passe incorrect !');
         }
     }
-
 
     async presentAlert(mgs) {
         const alert = await this.alertCtrl.create({
@@ -55,10 +54,18 @@ export class LoginPage implements OnInit {
     async presentToast(msg) {
         const toast = await this.toastController.create({
             message: msg,
-            duration: 2000
+            duration: 2000,
+            color: "success"
         });
         toast.present();
     }
 
-
+    async presentToastError(msg) {
+        const toast = await this.toastController.create({
+            message: msg,
+            duration: 2000,
+            color: "danger"
+        });
+        toast.present();
+    }
 }

@@ -8,6 +8,10 @@ const routes: Routes = [
         component: TabsPage,
         children: [
             {
+                path: 'home',
+                loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule)
+            },
+            {
                 path: 'reporting',
                 loadChildren: () => import('../../../../../Dashbord/dash/src/app/pages/reporting/reporting.module').then(m => m.ReportingPageModule)
             },
@@ -20,15 +24,19 @@ const routes: Routes = [
                 loadChildren: () => import('../../../../../Dashbord/dash/src/app/pages/tresorerie/tresorerie.module').then(m => m.TresoreriePageModule)
             },
             {
+                path: 'profil',
+                loadChildren: () => import('../../../../../Dashbord/dash/src/app/pages/profil/profil.module').then(m => m.ProfilPageModule)
+            },
+            {
                 path: '',
-                redirectTo: '/reporting',
+                redirectTo: '/home',
                 pathMatch: 'full'
-            }
+            },
         ]
     },
     {
         path: '',
-        redirectTo: '/reporting',
+        redirectTo: '/home',
         pathMatch: 'full'
     }
 ];

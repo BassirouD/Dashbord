@@ -1,0 +1,171 @@
+<ion-header [translucent]="true" scrollEvents="true" (ionScroll)="onScroll($event)">
+    <ion-toolbar color="myblue">
+        <ion-back-button slot="start" defaultHref="/tabs/home" style="color: #e7e7e7"></ion-back-button>
+        <ion-title style="font-size: 15px;">
+            Tendance et évolution mensuelle
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="text-white">
+                <ion-icon name="notifications-outline" class="ionSizeSetting"></ion-icon>
+            </ion-button>
+            <ion-button class="text-white">
+                <ion-icon name="cog-outline" class="ionSizeSetting" slot="end"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar color="myblue">
+<!--        <ion-row class="sticky-row">-->
+<!--            <ion-col size="10">-->
+<!--                <ion-text class="ion-padding-start" color="medium"-->
+<!--                          [ngClass]="{'location-visible': showLocationDetail, 'location-hidden': !showLocationDetail}">-->
+<!--                </ion-text>-->
+<!--                <ion-searchbar placeholder="Votre recherche ici"></ion-searchbar>-->
+<!--            </ion-col>-->
+<!--            <ion-col size="2">-->
+<!--                <ion-button class="classButom text-white" fill="clear" (click)="goProfil()">-->
+<!--                    <ion-icon class="tailleIcon" name="person" slot="icon-only"></ion-icon>-->
+<!--                </ion-button>-->
+<!--            </ion-col>-->
+<!--        </ion-row>-->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <form #f="ngForm">
+        <div>
+            <ion-row style="margin-right: 1%;margin-left: 1%">
+                <ion-col size="6">
+                    <ion-card class="text-center classSelect">
+                        <ion-item>
+                            <ion-row>
+                                <span>Année1: </span>
+                            </ion-row>
+                            <ion-row>
+                                <ion-input type="number" name="anne1" (ionChange)="checkannee1($event)"
+                                           [value]="anne1"></ion-input>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-card class="text-center classSelect">
+                        <ion-item>
+                            <ion-row>
+                                <span>Année2: </span>
+                            </ion-row>
+                            <ion-row>
+                                <ion-input type="number" name="anne2" (ionChange)="checkannee2($event)"
+                                           [value]="anne2"></ion-input>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+
+            <ion-row style="margin-right: 1%;margin-left: 1%">
+                <ion-col size="6">
+                    <ion-card>
+                        <ion-item>
+                            <ion-row>
+                                <span>Année3: </span>
+                            </ion-row>
+                            <ion-row>
+                                <ion-input type="number" name="anne3" (ionChange)="checkannee3($event)"
+                                           [value]="anne3"></ion-input>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+
+<!--            <ion-card class="ion-padding-horizontal" style="margin-left: 5%;margin-right: 5%">-->
+<!--                <ion-row>-->
+<!--                    <ion-col size="6">-->
+<!--                        <ion-item>-->
+<!--                            <ion-row>-->
+<!--                                <span>Année3: </span>-->
+<!--                            </ion-row>-->
+<!--                            <ion-row>-->
+<!--                                <ion-input type="text" name="anne3" (ionChange)="checkannee3($event)"-->
+<!--                                           [value]="anne3"></ion-input>-->
+<!--                            </ion-row>-->
+<!--                        </ion-item>-->
+<!--                    </ion-col>-->
+<!--                </ion-row>-->
+<!--            </ion-card>-->
+        </div>
+    </form>
+
+    <div class="tabs ion-padding">
+        <ion-segment value="volume" (ionChange)="segmentChange($event)">
+            <ion-segment-button value="volume">
+                <ion-label>Volume</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="graph" (click)="openGraph(data)">
+                <ion-label>Graphique</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div *ngIf="activeTab==='volume'">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+               class="mat-elevation-z8 demo-table">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="volume">
+                <th style="font-weight: bold;font-size: 15px;text-align: right" mat-header-cell *matHeaderCellDef mat-sort-header
+                    sortActionDescription="Sort by number">
+                    Dossiers
+                </th>
+                <td style="text-align: right" mat-cell *matCellDef="let element"> {{element.nbdoss}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="annee">
+                <th style="text-align: left;font-weight: bold;font-size: 15px" mat-header-cell *matHeaderCellDef
+                    mat-sort-header sortActionDescription="Sort by name">
+                    Année
+                </th>
+                <td style="text-align: left" mat-cell *matCellDef="let element"> {{element.annee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="mois">
+                <th style="text-align: center;font-weight: bold;font-size: 15px" mat-header-cell *matHeaderCellDef
+                    mat-sort-header sortActionDescription="Sort by name">
+                    Mois
+                </th>
+                <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.nommois}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="ca_j" class="ion-text-right">
+                <th style="text-align: right;font-weight: bold;font-size: 15px" mat-header-cell *matHeaderCellDef
+                    mat-sort-header sortActionDescription="Sort by weight">
+                    CA mensuel
+                </th>
+                <td style="text-align: right" mat-cell
+                    *matCellDef="let element"> {{numStr(element.nbdoss * 14000, '.')}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <div *ngIf="activeTab === 'graph'">
+        <ion-card>
+            <ion-list>
+                <ion-item>
+                    <span>Volume ou CA</span>
+                    <ion-toggle [(ngModel)]="volumeOuCA" color="primary" slot="end" (ionChange)="change()"></ion-toggle>
+                </ion-item>
+            </ion-list>
+            <ion-card-header></ion-card-header>
+            <ion-card-content>
+                <div [chart]="chartOptions" style="width:80%; height:390px;margin:auto;"></div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

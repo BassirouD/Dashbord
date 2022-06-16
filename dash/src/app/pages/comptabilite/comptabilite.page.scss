@@ -106,3 +106,159 @@ ion-refresher {
   width: 24px;
   height: 24px;
 }
+
+.colorBadge{
+    background-color: #f4f5f8;
+    width: 180px;
+}
+
+#container {
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#container strong {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+#container p {
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #8c8c8c;
+
+    margin: 0;
+}
+
+#container a {
+    text-decoration: none;
+}
+
+ion-slides {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.featured-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+ion-searchbar {
+    --icon-color: var(--ion-color-medium);
+}
+
+ion-content {
+    --padding-top: 0px;
+}
+
+.sticky-row {
+    position: sticky;
+    top: calc(env(safe-area-inset-top) - 30px);
+    z-index: 2;
+    //background: #4c8dff;
+    box-shadow: 0px 9px 11px -15px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.info-row {
+    background: #4c8dff;
+    position: sticky;
+    top: calc(env(safe-area-inset-top) - 40px);
+    z-index: 2;
+}
+
+ion-refresher {
+    padding-top: calc(env(safe-area-inset-top) + 50px);
+}
+
+.location-visible {
+    opacity: 1;
+    transition: .5s;
+}
+
+.location-hidden {
+    opacity: 0;
+    transition: .5s;
+}
+
+.classButom{
+    margin-bottom: 10px;
+}
+
+.tailleIcon{
+    height: 100px;
+    height: 100px;
+    //margin-right: 60px;
+    margin-left: -3px;
+    margin-top: 4px;
+}
+
+.ionSizeSetting{
+    width: 24px;
+    height: 24px;
+}
+
+table {
+    width: 100%;
+}
+
+.volume {
+    largeur : 32px ;
+    border-right : 1px solid currentColor;
+    padding-right : 24px ;
+    text-align : center;
+}
+
+.date {
+    padding-left : 16px ;
+    //taille de police : 20px ;
+}
+
+.mat-column-demo-weight {
+    //style de police : italique;
+}
+
+.ca_j {
+    largeur : 32px ;
+    text-align : center;
+    //font-weight : gras;
+}
+
+.tabs{
+    font-family: "Nato Sans HK", sans-serif;
+    ion-segment{
+        --background: none;
+        ion-segment-button{
+            font-size: 1rem;
+            --border-width: 0;
+            --padding-start: 8px !important;
+            --padding-bottom: 3px !important;
+            --padding-end: 8px !important;
+            --padding-top: 3px !important;
+            --background-checked: #0022ff;
+            --indicator-color: transparent !important;
+            --color: #7d7d7d;
+            --color-checked: #fff;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+    }
+}
